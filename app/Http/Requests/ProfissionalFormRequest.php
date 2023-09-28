@@ -2,12 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Dotenv\Validator;
-use Illuminate\Contracts\Validation\Validator as ValidationValidator;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class ClienteFormRequest extends FormRequest
+class ProfissionalFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,10 +19,11 @@ class ClienteFormRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
+
         return [
             'nome' => 'required|max:120|min:5',
             'celular' => 'required|max:11|min:10',
@@ -36,12 +36,14 @@ class ClienteFormRequest extends FormRequest
             'rua' => 'required|max:120|',
             'numero' => 'required|max:10|',
             'bairro' => 'required|max:100',
-            'cep' => 'required|max:8|',
+            'cep' => 'required|max:8|min:8|',
             'complemento' => 'max:150|',
             'senha' => 'required',
+            'salario' => 'required',
         ];
     }
-    public function failedValidation(ValidationValidator $validator)
+
+    public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
             'sucess' => false,
@@ -94,6 +96,8 @@ class ClienteFormRequest extends FormRequest
             'complemento.max' => 'O campo complemento deve conter no maximo 150 caracteres',
 
             'senha.required' => 'O campo senha é obrigatorio',
+
+            'salario.required' => 'O campo salario é obrigatorio',
         ];
     }
-}
+};
