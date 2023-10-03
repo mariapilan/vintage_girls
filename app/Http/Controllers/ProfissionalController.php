@@ -34,4 +34,73 @@ class ProfissionalController extends Controller
    
            ],200);
        }
-}
+
+       public function pesquisarPorNome(Request $request)
+       {
+           $profissional = Profissional::where('nome', 'like', '%' . $request->nome . '%')->get();
+           if (count($profissional) > 0) {
+               return response()->json([
+                   'status' => true,
+                   'data' => $profissional
+               ]);
+           }
+           else{
+               return response()->json([
+                   'status' => false,
+                   'message' => "Nenhum cliente encontrado"
+               ]);
+           }
+       }
+
+       public function pesquisarCpf(Request $request)
+       {
+           $profissional = Profissional::where('cpf', 'like', '%' . $request->cpf . '%')->get();
+           if (count($profissional) > 0) {
+               return response()->json([
+                   'status' => true,
+                   'data' => $profissional
+               ]);
+           }
+           else{
+               return response()->json([
+                   'status' => false,
+                   'message' => "Nenhum cliente encontrado"
+               ]);
+           }
+       }
+
+       public function pesquisarCelular(Request $request)
+       {
+           $profissional = Profissional::where('celular', 'like', '%' . $request->celular . '%')->get();
+           if (count($profissional) > 0) {
+               return response()->json([
+                   'status' => true,
+                   'data' => $profissional
+               ]);
+           }
+           else{
+               return response()->json([
+                   'status' => false,
+                   'message' => "Nenhum cliente encontrado"
+               ]);
+           }
+       }
+
+       public function pesquisarEmail(Request $request)
+       {
+           $profissional = Profissional::where('email', 'like', '%' . $request->email . '%')->get();
+           if (count($profissional) > 0) {
+               return response()->json([
+                   'status' => true,
+                   'data' => $profissional
+               ]);
+           }
+           else{
+               return response()->json([
+                   'status' => false,
+                   'message' => "Nenhum cliente encontrado"
+               ]);
+           }
+       }
+    }
+
