@@ -25,7 +25,7 @@ Route::delete('servico/remover/{id}',[ServicoController::class,'excluir']);
 Route::put('servico/update',[ServicoController::class,'update']);
 Route::get('servico/all', [ServicoController::class, 'retornarTodos']);
 
-Route::post('cliente/all', [ClienteController::class, 'store']);
+Route::post('cliente/store', [ClienteController::class, 'store']);
 
 Route::post('profissional/store', [ProfissionalController::class, 'store']);
 
@@ -38,3 +38,5 @@ Route::post('cliente/celular',[ClienteController::class,'pesquisarCelular']);
 Route::post('cliente/email',[ClienteController::class,'pesquisarEmail']);
 
 Route::post('Agenda/store',[AgendaController::class,'store']);
+
+Route::get('cliente/all',[ClienteController::class,'retornarTodos']);
