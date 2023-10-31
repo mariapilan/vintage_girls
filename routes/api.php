@@ -40,3 +40,7 @@ Route::post('cliente/email',[ClienteController::class,'pesquisarEmail']);
 Route::post('Agenda/store',[AgendaController::class,'store']);
 
 Route::get('cliente/all',[ClienteController::class,'retornarTodos']);
+
+Route::get('profissional/all',[ProfissionalController::class,'retornarTodos']);
+
+Route::post('profissional/nome',[ProfissionalController::class,'pesquisarPorNome']);

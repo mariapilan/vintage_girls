@@ -102,5 +102,13 @@ class ProfissionalController extends Controller
                ]);
            }
        }
+       public function retornarTodos()
+       {
+           $profissional = Profissional::all();
+           return response()->json([
+               'status' => true,
+               'data' => $profissional
+           ]);
+       }
     }
 

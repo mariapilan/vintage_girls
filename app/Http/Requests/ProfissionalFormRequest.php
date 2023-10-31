@@ -28,7 +28,7 @@ class ProfissionalFormRequest extends FormRequest
             'nome' => 'required|max:120|min:5',
             'celular' => 'required|max:11|min:10',
             'email' => 'required|email|max:120|',
-            'cpf' => 'required|max:11|min:11',
+            'cpf' => 'required|max:11|min:11|unique',
             'dataNascimento' => 'required',
             'cidade' => 'required|max:120|',
             'estado' => 'required|max:2|min:2',
@@ -67,6 +67,7 @@ class ProfissionalFormRequest extends FormRequest
             'cpf.required' => 'O campo cpf é obrigatorio',
             'cpf.max' => 'O campo cpf deve conter no maximo 11 caracteres',
             'cpf.min' => 'O campo cpf deve conter no minimo 11 caracteres',
+            'cpf.unique' => 'O campo cpf deve ser unico',
 
             'dataNascimento.required' => 'O campo data de nascimento é obrigatorio',
 
