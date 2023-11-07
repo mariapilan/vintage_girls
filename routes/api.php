@@ -37,6 +37,10 @@ Route::post('cliente/celular',[ClienteController::class,'pesquisarCelular']);
 
 Route::post('cliente/email',[ClienteController::class,'pesquisarEmail']);
 
+Route::get('cliente/find/{id}',[ClienteController::class,'pesquisarPorId']);
+
+Route::get('profissional/find/{id}',[ProfissionalController::class,'pesquisarPorId']);
+
 Route::post('Agenda/store',[AgendaController::class,'store']);
 
 Route::get('cliente/all',[ClienteController::class,'retornarTodos']);
@@ -44,3 +48,9 @@ Route::get('cliente/all',[ClienteController::class,'retornarTodos']);
 Route::get('profissional/all',[ProfissionalController::class,'retornarTodos']);
 
 Route::post('profissional/nome',[ProfissionalController::class,'pesquisarPorNome']);
+
+Route::put('cliente/update',[ClienteController::class,'update']);
+
+Route::put('profissional/update',[ProfissionalController::class,'update']);
+
+Route::get('servico/find/{id}',[ServicoController::class,'pesquisarPorId']);

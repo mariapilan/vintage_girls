@@ -102,5 +102,19 @@ public function retornarTodos(){
     ]);
 }
 
+public function pesquisarPorId($id){
+    $usuario = Servico::find($id);
+    if($usuario == null){
+       return response()->json([
+        'status'=> false,
+        'message'=> "Usuário não encontrado"
+       ]);
+    }
+    return response()->json([
+        'status'=> true,
+        'data'=> $usuario
+    ]);
+}
+
 }
 

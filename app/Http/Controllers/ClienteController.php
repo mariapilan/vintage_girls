@@ -99,6 +99,98 @@ class ClienteController extends Controller
             ]);
         }
     }
+
+    public function update (Request $request){
+        $servicos = Cliente::find($request->id);
+    
+        if(!isset($servicos)){
+            return response()->json([
+                'status'=> false,
+                'message'=> 'Serviço não encontrado'
+            ]);
+        }
+    
+        if (isset($request->nome)){
+            $servicos->nome = $request->nome;
+        }
+        
+        if (isset($request->celular)){                                                 
+            $servicos->celular = $request->celular;
+        }
+
+        if (isset($request->email)){
+            $servicos->email = $request->email;
+        }
+
+        if (isset($request->cpf)){
+            $servicos->cpf = $request->cpf;
+        }
+
+        if (isset($request->dataNascimento)){
+            $servicos->dataNascimento = $request->dataNascimento;
+        }
+
+        if (isset($request->cidade)){
+            $servicos->cidade = $request->cidade;
+        }
+
+        if (isset($request->estado)){
+            $servicos->estado = $request->estado;
+        }
+
+        if (isset($request->pais)){
+            $servicos->pais = $request->pais;
+        }
+
+        if (isset($request->rua)){
+            $servicos->rua = $request->rua;
+        }
+
+        if (isset($request->numero)){
+            $servicos->numero = $request->numero;
+        }
+
+        if (isset($request->bairro)){
+            $servicos->bairro = $request->bairro;
+        }
+
+        if (isset($request->cep)){
+            $servicos->cep = $request->cep;
+        }
+
+        if (isset($request->complemento)){
+            $servicos->complemento = $request->complemento;
+        }
+
+        if (isset($request->senha)){
+            $servicos->senha = $request->senha;
+        }
+
+        $servicos->update();
+    
+        return response()->json([
+            'status'=> true,
+            'message'=> 'Serviço atualizado.'
+        ]);
+    
+    }
+
+    public function pesquisarPorId($id){
+        $usuario = Cliente::find($id);
+        if($usuario == null){
+           return response()->json([
+            'status'=> false,
+            'message'=> "Usuário não encontrado"
+           ]);
+        }
+        return response()->json([
+            'status'=> true,
+            'data'=> $usuario
+        ]);
+    }
+
+
+
     public function retornarTodos()
     {
         $clientes = Cliente::all();
@@ -108,3 +200,4 @@ class ClienteController extends Controller
         ]);
     }
 }
+
