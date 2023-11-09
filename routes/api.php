@@ -54,3 +54,7 @@ Route::put('cliente/update',[ClienteController::class,'update']);
 Route::put('profissional/update',[ProfissionalController::class,'update']);
 
 Route::get('servico/find/{id}',[ServicoController::class,'pesquisarPorId']);
+
+Route::delete('cliente/remover/{id}',[ClienteController::class,'excluir']);
+
+Route::delete('profissional/remover/{id}',[ProfissionalController::class,'excluir']);

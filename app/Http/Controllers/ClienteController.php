@@ -199,5 +199,24 @@ class ClienteController extends Controller
             'data' => $clientes
         ]);
     }
+    public function excluir($id){
+        $servicos = Cliente::find($id);
+    
+        if(!isset($servicos)){
+            return response()->json([
+                'status'=>false,
+                'message'=> "Serviço não encontrado"
+            
+            ]);
+        }
+
+        $servicos->delete();
+        return response()->json([
+            'status'=>true,
+            'message'=>"Serviço excluído com sucesso"
+        ]);
+    
+        }
 }
+
 
