@@ -25,5 +25,22 @@ class AgendaController extends Controller
    
            ],200);
        }
-        
+       public function excluir($id){
+        $agenda = Agenda::find($id);
+    
+        if(!isset($servicos)){
+            return response()->json([
+                'status'=>false,
+                'message'=> "Serviço não encontrado"
+            
+            ]);
+        }
+
+        $agenda->delete();
+        return response()->json([
+            'status'=>true,
+            'message'=>"Serviço excluído com sucesso"
+        ]);
+    
+        }
 }

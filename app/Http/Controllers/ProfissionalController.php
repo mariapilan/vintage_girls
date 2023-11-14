@@ -104,7 +104,7 @@ class ProfissionalController extends Controller
        }
 
        public function update (Request $request){
-        $servicos = Profissional::find($request->id);
+        $profissional = Profissional::find($request->id);
     
         if(!isset($servicos)){
             return response()->json([
@@ -114,67 +114,67 @@ class ProfissionalController extends Controller
         }
     
         if (isset($request->nome)){
-            $servicos->nome = $request->nome;
+            $profissional->nome = $request->nome;
         }
         
         if (isset($request->celular)){                                                 
-            $servicos->celular = $request->celular;
+            $profissional->celular = $request->celular;
         }
 
         if (isset($request->email)){
-            $servicos->email = $request->email;
+            $profissional->email = $request->email;
         }
 
         if (isset($request->cpf)){
-            $servicos->cpf = $request->cpf;
+            $profissional->cpf = $request->cpf;
         }
 
         if (isset($request->dataNascimento)){
-            $servicos->dataNascimento = $request->dataNascimento;
+            $profissional->dataNascimento = $request->dataNascimento;
         }
 
         if (isset($request->cidade)){
-            $servicos->cidade = $request->cidade;
+            $profissional->cidade = $request->cidade;
         }
 
         if (isset($request->estado)){
-            $servicos->estado = $request->estado;
+            $profissional->estado = $request->estado;
         }
 
         if (isset($request->pais)){
-            $servicos->pais = $request->pais;
+            $profissional->pais = $request->pais;
         }
 
         if (isset($request->rua)){
-            $servicos->rua = $request->rua;
+            $profissional->rua = $request->rua;
         }
 
         if (isset($request->numero)){
-            $servicos->numero = $request->numero;
+            $profissional->numero = $request->numero;
         }
 
         if (isset($request->bairro)){
-            $servicos->bairro = $request->bairro;
+            $profissional->bairro = $request->bairro;
         }
 
         if (isset($request->cep)){
-            $servicos->cep = $request->cep;
+            $profissional->cep = $request->cep;
         }
 
         if (isset($request->complemento)){
-            $servicos->complemento = $request->complemento;
+            $profissional->complemento = $request->complemento;
         }
 
         if (isset($request->senha)){
-            $servicos->senha = $request->senha;
+            $profissional->senha = $request->senha;
         }
 
         if (isset($request->salario)){
-            $servicos->salario = $request->salario;
+            $profissional->salario = $request->salario;
         }
         
     
-        $servicos->update();
+        $profissional->update();
     
         return response()->json([
             'status'=> true,
@@ -193,8 +193,8 @@ class ProfissionalController extends Controller
        }
 
        public function pesquisarPorId($id){
-        $usuario = Profissional::find($id);
-        if($usuario == null){
+        $profissional = Profissional::find($id);
+        if($profissional == null){
            return response()->json([
             'status'=> false,
             'message'=> "Usuário não encontrado"
@@ -202,21 +202,21 @@ class ProfissionalController extends Controller
         }
         return response()->json([
             'status'=> true,
-            'data'=> $usuario
+            'data'=> $profissional
         ]);
     }
 
     public function excluir($id){
-        $servicos = Profissional::find($id);
+        $profissional = Profissional::find($id);
     
-        if(!isset($servicos)){
+        if(!isset($profissional)){
             return response()->json([
                 'status'=>false,
                 'message'=> "Serviço não encontrado"
             ]);
         }
 
-        $servicos->delete();
+        $profissional->delete();
         return response()->json([
             'status'=>true,
             'message'=>"Serviço excluído com sucesso"

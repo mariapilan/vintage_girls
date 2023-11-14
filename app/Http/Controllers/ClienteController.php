@@ -200,7 +200,7 @@ class ClienteController extends Controller
         ]);
     }
     public function excluir($id){
-        $servicos = Cliente::find($id);
+        $clientes = Cliente::find($id);
     
         if(!isset($servicos)){
             return response()->json([
@@ -210,7 +210,7 @@ class ClienteController extends Controller
             ]);
         }
 
-        $servicos->delete();
+        $clientes->delete();
         return response()->json([
             'status'=>true,
             'message'=>"Serviço excluído com sucesso"

@@ -103,8 +103,8 @@ public function retornarTodos(){
 }
 
 public function pesquisarPorId($id){
-    $usuario = Servico::find($id);
-    if($usuario == null){
+    $servicos = Servico::find($id);
+    if($servicos == null){
        return response()->json([
         'status'=> false,
         'message'=> "Usuário não encontrado"
@@ -112,7 +112,7 @@ public function pesquisarPorId($id){
     }
     return response()->json([
         'status'=> true,
-        'data'=> $usuario
+        'data'=> $servicos
     ]);
 }
 
