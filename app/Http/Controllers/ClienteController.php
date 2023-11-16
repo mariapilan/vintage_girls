@@ -200,9 +200,9 @@ class ClienteController extends Controller
         ]);
     }
     public function excluir($id){
-        $clientes = Cliente::find($id);
+        $cliente = Cliente::find($id);
     
-        if(!isset($servicos)){
+        if(!isset($cliente)){
             return response()->json([
                 'status'=>false,
                 'message'=> "Serviço não encontrado"
@@ -210,13 +210,36 @@ class ClienteController extends Controller
             ]);
         }
 
-        $clientes->delete();
+        $cliente->delete();
         return response()->json([
             'status'=>true,
             'message'=>"Serviço excluído com sucesso"
         ]);
     
         }
+
+
+    public function recuperarSenha(Request $request)
+    {
+
+        $cliente = Cliente::where('cpf', '=', $request->cpf)->first();
+
+        if (!isset($cliente)) {
+            return response()->json([
+                'status' => false,
+                'data' => "Cliente não encontrado"
+
+            ]);
+        }
+
+        return response()->json([
+            'status' => true,
+            'password' => Hash::make($cliente->cpf)
+        ]);
+
+    }
+
+    
 }
 
 
