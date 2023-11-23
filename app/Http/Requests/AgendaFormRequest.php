@@ -25,11 +25,11 @@ class AgendaFormRequest extends FormRequest
     {
         return [
             'profissional_id' => 'required',
-            'clinte_id' => 'required',
-            'servico_id' => 'required',
+            //'clinte_id' => 'required',
+            //'servico_id' => 'required',
             'data_hora' => 'required',
-            'tipo_pagamento' => 'required|max: 20|min: 3',
-            'valor' => 'required'
+            //'tipo_pagamento' => 'required|max: 20|min: 3',
+            //'valor' => 'required'
         ];
     }
     public function failedValidation(Validator $validator){
@@ -42,10 +42,10 @@ class AgendaFormRequest extends FormRequest
        return [
         'nome.required'=>'O campo nome é obrigatorio',
         'data_hora.required'=>'O campo data/hora é obrigatorio',
-        'tipo_pagamento.required'=>'O campo tipo de pagamento é obrigatorio',
-        'tipo_pagamento.max'=>'O maximo é 20 caracteres',
-        'tipo_pagamento.min'=>'É obrigatorio no minimo 3 caracteres',
-        'valor.required'=>'O valor é obrigatorio'
+        //'tipo_pagamento.required'=>'O campo tipo de pagamento é obrigatorio',
+        //'tipo_pagamento.max'=>'O maximo é 20 caracteres',
+        //'tipo_pagamento.min'=>'É obrigatorio no minimo 3 caracteres',
+        //'valor.required'=>'O valor é obrigatorio'
 
        ];
 }
