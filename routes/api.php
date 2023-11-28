@@ -41,8 +41,6 @@ Route::get('cliente/find/{id}',[ClienteController::class,'pesquisarPorId']);
 
 Route::get('profissional/find/{id}',[ProfissionalController::class,'pesquisarPorId']);
 
-Route::post('Agenda/store',[AgendaController::class,'store']);
-
 Route::get('cliente/all',[ClienteController::class,'retornarTodos']);
 
 Route::get('profissional/all',[ProfissionalController::class,'retornarTodos']);
@@ -58,3 +56,17 @@ Route::get('servico/find/{id}',[ServicoController::class,'pesquisarPorId']);
 Route::delete('cliente/remover/{id}',[ClienteController::class,'excluir']);
 
 Route::delete('profissional/remover/{id}',[ProfissionalController::class,'excluir']);
+
+Route::post('agenda/store',[AgendaController::class,'store']);
+
+Route::get('agenda/find/{id}',[AgendaController::class,'pesquisarPorId']);
+
+Route::get('agenda/editar',[AgendaController::class,'editar']);
+
+Route::get('agenda/excluir',[AgendaController::class,'excluir']);
+
+Route::get('agenda/all',[AgendaController::class,'retornarTodos']);
+
+Route::put('Recuperar/senha/cliente',[ClienteController::class, 'recuperarSenha']);
+
+Route::put('Recuperar/senha/profissional',[ProfissionalController::class, 'recuperarSenha']);
