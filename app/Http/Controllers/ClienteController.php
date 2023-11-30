@@ -101,9 +101,9 @@ class ClienteController extends Controller
     }
 
     public function update (Request $request){
-        $servicos = Cliente::find($request->id);
+        $cliente = Cliente::find($request->id);
     
-        if(!isset($servicos)){
+        if(!isset($cliente)){
             return response()->json([
                 'status'=> false,
                 'message'=> 'Serviço não encontrado'
@@ -111,62 +111,62 @@ class ClienteController extends Controller
         }
     
         if (isset($request->nome)){
-            $servicos->nome = $request->nome;
+            $cliente->nome = $request->nome;
         }
         
         if (isset($request->celular)){                                                 
-            $servicos->celular = $request->celular;
+            $cliente->celular = $request->celular;
         }
 
         if (isset($request->email)){
-            $servicos->email = $request->email;
+            $cliente->email = $request->email;
         }
 
         if (isset($request->cpf)){
-            $servicos->cpf = $request->cpf;
+            $cliente->cpf = $request->cpf;
         }
 
         if (isset($request->dataNascimento)){
-            $servicos->dataNascimento = $request->dataNascimento;
+            $cliente->dataNascimento = $request->dataNascimento;
         }
 
         if (isset($request->cidade)){
-            $servicos->cidade = $request->cidade;
+            $cliente->cidade = $request->cidade;
         }
 
         if (isset($request->estado)){
-            $servicos->estado = $request->estado;
+            $cliente->estado = $request->estado;
         }
 
         if (isset($request->pais)){
-            $servicos->pais = $request->pais;
+            $cliente->pais = $request->pais;
         }
 
         if (isset($request->rua)){
-            $servicos->rua = $request->rua;
+            $cliente->rua = $request->rua;
         }
 
         if (isset($request->numero)){
-            $servicos->numero = $request->numero;
+            $cliente->numero = $request->numero;
         }
 
         if (isset($request->bairro)){
-            $servicos->bairro = $request->bairro;
+            $cliente->bairro = $request->bairro;
         }
 
         if (isset($request->cep)){
-            $servicos->cep = $request->cep;
+            $cliente->cep = $request->cep;
         }
 
         if (isset($request->complemento)){
-            $servicos->complemento = $request->complemento;
+            $cliente->complemento = $request->complemento;
         }
 
         if (isset($request->senha)){
-            $servicos->senha = $request->senha;
+            $cliente->senha = $request->senha;
         }
 
-        $servicos->update();
+        $cliente->update();
     
         return response()->json([
             'status'=> true,
@@ -222,7 +222,7 @@ class ClienteController extends Controller
     public function recuperarSenha(Request $request)
     {
 
-        $cliente = Cliente::where('cpf', '=', $request->cpf)->first();
+        $cliente = Cliente::where('email', '=', $request->email)->first();
 
         if (!isset($cliente)) {
             return response()->json([
@@ -231,10 +231,14 @@ class ClienteController extends Controller
 
             ]);
         }
+       
+        $cliente->senha = Hash::make($cliente->email);
+      
 
+        $cliente->update();
         return response()->json([
             'status' => true,
-            'password' => Hash::make($cliente->cpf)
+            'msg' => 'Senha alterada com sucesso!' 
         ]);
 
     }

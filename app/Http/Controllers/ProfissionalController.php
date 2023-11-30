@@ -223,7 +223,32 @@ class ProfissionalController extends Controller
         ]);
     
         }
+        public function recuperarSenha(Request $request)
+        {
+    
+            $profissional = Profissional::where('email', '=', $request->email)->first();
+    
+            if (!isset($profissional)) {
+                return response()->json([
+                    'status' => false,
+                    'data' => "Profissional não encontrado"
+    
+                ]);
+            }
+           
+            $profissional->senha = Hash::make($profissional->email);
+          
+    
+            $profissional->update();
+            return response()->json([
+                'status' => true,
+                'msg' => 'Senha alterada com sucesso!' 
+            ]);
+    
+        }
+             
     }
+    
 
 
 

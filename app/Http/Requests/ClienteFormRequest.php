@@ -27,7 +27,7 @@ class ClienteFormRequest extends FormRequest
         return [
             'nome' => 'required|max:120|min:5',
             'celular' => 'required|max:11|min:10',
-            'email' => 'required|email|max:120|',
+            'email' => 'required|email|max:120|unique:clientes,email|email:rfc,dns',
             'cpf' => 'required|max:11|min:11',
             'dataNascimento' => 'required',
             'cidade' => 'required|max:120|',
@@ -61,6 +61,8 @@ class ClienteFormRequest extends FormRequest
 
             'email.required' => 'O campo email é obrigatorio',
             'email.max' => 'O campo email deve conter no maximo 120 caracteres',
+            'email.unique' => 'E-mail já cadastrado no sistema',
+            'email.email' => 'Formato de email inválido!',
 
             'cpf.required' => 'O campo cpf é obrigatorio',
             'cpf.max' => 'O campo cpf deve conter no maximo 11 caracteres',
