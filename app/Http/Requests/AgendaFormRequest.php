@@ -26,8 +26,8 @@ class AgendaFormRequest extends FormRequest
         return [
             'profissional_id' => 'required',
             'horario_data'=> 'required',
-            'tipo_pagamento' => 'required|max: 20|min: 3',
-            'valor' => 'required'
+            'tipo_pagamento' => '|max: 20|min: 3',
+            'valor' => ''
         ];
     }
 
